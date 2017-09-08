@@ -21,7 +21,8 @@ sub iterator {
     my $dir = undef;
     my $upper = getcwd;   
             
-    opendir DIR, $DIR_PATH or die "Can not open ".$DIR_PATH."\n";
+    opendir DIR, $DIR_PATH or 
+        die "Can not open ".$DIR_PATH."\n";
     my @filelist = readdir DIR;
     
     chdir $DIR_PATH;    
@@ -66,10 +67,10 @@ sub deal_with_file {
         
         # substitute content of variable 
         # into Content of -I option.
-        if ($row =~ m/\$\(([^\)]*)\)/) {
+        while ($row =~ m/\$\(([^\)]*)\)/) {
             $substitute_key = $1;
             $substitute_val = # Get from JSON.
-            $row =~ s/\$\($substitute\)/$substitute_val/;
+            $row =~ s/\$\($substitute_key\)/$substitute_val/;
         }
     }
     
@@ -77,7 +78,7 @@ sub deal_with_file {
 }
 
 # subroutine to generate include.lnt
-sub include_lnt_gen {
+sub lnt_file_gen {
     
 }
 
