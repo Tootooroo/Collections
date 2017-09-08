@@ -9,11 +9,11 @@ use Data::Dumper;
 use JSON;
 
 # Where to begin and recursive down.
-my $ROOT_PATH = @ARGV[0];
+my $ROOT_PATH = "E:\\CODE\\GL8600\\gbn\\src";
 # Value of macro or some variable.
-my $VAR_LIST_PATH = @ARGV[1];
+my $VAR_LIST_FILE = "E:\\CODE\\Others\\perlvarList.json";
 # The name of files that we want to process.
-my $TARGET_FILE= @ARGV[2];
+my $TARGET_FILE= "Makefile";
 
 sub iterator {
     my $DIR_PATH = $_[0];
@@ -69,7 +69,7 @@ sub deal_with_file {
         # into Content of -I option.
         while ($row =~ m/\$\(([^\)]*)\)/) {
             $substitute_key = $1;
-            $substitute_val = # Get from JSON.
+            $substitute_val = 
             $row =~ s/\$\($substitute_key\)/$substitute_val/;
         }
     }
@@ -83,4 +83,14 @@ sub lnt_file_gen {
 }
 
 # main
-&iterator($ROOT_PATH, \&deal_with_file);
+my $JSON = new JSON;
+my $json_data = do {
+    open VAR_FILE, $VAR_LIST_FILE
+        or die "Can not open ".$VAR_LIST_FILE."\n";
+    local $\;
+    <VAR_FILE>
+};
+
+my $json_obj = json_decode($json_data);
+
+&iterator($ROOT_PATH, \&deal_with_file, $json_obj);
