@@ -69,7 +69,7 @@ sub deal_with_file {
         if ($row =~ m/\$\(([^\)]*)\)/) {
             $substitute_key = $1;
             $substitute_val = # Get from JSON.
-            $row =~ s/\$\($substitute\)/$substitute_val/;
+            $row =~ s/\$\($substitute_key\)/$substitute_val/;
         }
     }
     
