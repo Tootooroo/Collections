@@ -42,6 +42,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set t_Co=256
 
 "let g:ycm_global_ycm_extra_conf='/home/aydenlin/.vim/bundle/youcompleteme/.ycm_extra_conf.py'
 let g:ycm_enable_diagnostic_signs=0
