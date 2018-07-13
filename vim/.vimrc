@@ -14,8 +14,9 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline'
 Plugin 'majutsushi/tagbar'
 Plugin 'valloric/youcompleteme'
-Plugin 'skroll/vim-taghighlight'
-
+Plugin 'TagHighlight'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tpope/vim-fugitive'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -42,11 +43,12 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-set t_Co=256
+set completeopt-=preview
 
 "let g:ycm_global_ycm_extra_conf='/home/aydenlin/.vim/bundle/youcompleteme/.ycm_extra_conf.py'
 let g:ycm_enable_diagnostic_signs=0
-let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_add_preview_to_completeopt=0
+"let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_collect_identifiers_from_tags_files=1
 let g:ycm_show_diagnostics_ui=0
 
@@ -54,13 +56,23 @@ let g:ycm_show_diagnostics_ui=0
 if ! exists('g:TagHighlightSettings')
     let g:TagHighlightSettings = {}
 endif
-let g:TagHighlightSettings['ForcedPythonVariant'] = 'if_pyth'
+let g:TagHighlightSettings['ForcedPythonVariant'] = 'python'
 let g:TagHighlightSettings['CtagsExecutable'] = 'ctags'
 
+" Airline
+let g:airline_powerline_fonts=1
+let g:airline#extensions#branch#enabled = 1
+let g:airline_theme = 'solarized'
+let g:airline#extensions#hunks#enabled=0
+let g:airline#extensions#branch#enabled=1
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
 
 " mapping
-nmap <S-t> :NERDTreeToggle<CR>
-nmap <S-s> :TagbarToggle<CR>
-nmap <S-h> :exe "silent !ctags --fields=+l -R ." \| UpdateTypesFileOnly  \|redraw!<CR> 
+nmap <C-f> :NERDTreeToggle<CR>
+nmap <C-t> :TagbarToggle<CR>
+nmap <C-l> :exe "silent !ctags --fields=+l -R ." \| UpdateTypesFileOnly  \| redraw!<CR> 
 nmap <C-x> :q<CR>
 nmap <C-r> :w<CR>
