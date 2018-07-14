@@ -17,6 +17,9 @@ Plugin 'valloric/youcompleteme'
 Plugin 'TagHighlight'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/syntastic'
+Plugin 'chiel92/vim-autoformat'
+Plugin 'raimondi/delimitmate'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -52,7 +55,7 @@ let g:ycm_add_preview_to_completeopt=0
 let g:ycm_collect_identifiers_from_tags_files=1
 let g:ycm_show_diagnostics_ui=0
 
-
+" TagHightlight
 if ! exists('g:TagHighlightSettings')
     let g:TagHighlightSettings = {}
 endif
@@ -69,6 +72,20 @@ if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_enable_signs = 0
+
+" Autoformat
+nmap <F2> :Autoformat<CR> 
 
 " mapping
 nmap <C-f> :NERDTreeToggle<CR>
