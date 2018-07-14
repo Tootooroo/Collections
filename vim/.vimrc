@@ -20,6 +20,8 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/syntastic'
 Plugin 'chiel92/vim-autoformat'
 Plugin 'raimondi/delimitmate'
+Plugin 'honza/vim-snippets'
+Plugin 'sirver/ultisnips'
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -86,6 +88,11 @@ let g:syntastic_enable_signs = 0
 
 " Autoformat
 nmap <F2> :Autoformat<CR> 
+
+" snippet
+let g:UltiSnipsExpandTrigger="<F2>"
+
+
 
 " mapping
 nmap <C-f> :NERDTreeToggle<CR>
