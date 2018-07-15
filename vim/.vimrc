@@ -75,6 +75,9 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.space = "\ua0"
 
+" NERDTree
+let g:NERDTreeMinimalUI=1
+
 " Syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -87,16 +90,16 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_signs = 0
 
 " Autoformat
-nmap <F2> :Autoformat<CR> 
+nmap <C-t> :Autoformat<CR> 
 
 " snippet
-let g:UltiSnipsExpandTrigger="<F2>"
-
-
+let g:UltiSnipsExpandTrigger="<C-j>"
 
 " mapping
-nmap <C-f> :NERDTreeToggle<CR>
-nmap <C-t> :TagbarToggle<CR>
+nmap <F2> :NERDTreeToggle<CR>
+nmap <F3> :TagbarToggle<CR>
 nmap <C-l> :exe "silent !ctags --fields=+l -R ." \| UpdateTypesFileOnly  \| redraw!<CR> 
 nmap <C-x> :q<CR>
 nmap <C-r> :w<CR>
+
+
