@@ -22,6 +22,8 @@ Plugin 'chiel92/vim-autoformat'
 Plugin 'raimondi/delimitmate'
 Plugin 'honza/vim-snippets'
 Plugin 'sirver/ultisnips'
+Plugin 'skywind3000/asyncrun.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -49,6 +51,7 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set completeopt-=preview
+set cino=(s,m1
 
 "let g:ycm_global_ycm_extra_conf='/home/aydenlin/.vim/bundle/youcompleteme/.ycm_extra_conf.py'
 let g:ycm_enable_diagnostic_signs=0
@@ -96,6 +99,8 @@ nmap <C-t> :Autoformat<CR>
 let g:UltiSnipsExpandTrigger="<C-j>"
 
 " mapping
+nmap <A-s> :AsyncRun grep -nH -R <C-r><C-w> .<CR>
+nmap <A-S> :AsyncRun grep -R   .<left><left><CR>
 nmap <F2> :NERDTreeToggle<CR>
 nmap <F3> :TagbarToggle<CR>
 nmap <C-l> :exe "silent !ctags --fields=+l -R ." \| UpdateTypesFileOnly  \| redraw!<CR> 
