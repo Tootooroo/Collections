@@ -1,0 +1,92 @@
+set encoding=utf-8
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" set the runtime path to include Vundle and initialize
+set rtp+=$VIM/vimfiles/plugin/vundle
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+            
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'bling/vim-airline'
+Plugin 'majutsushi/tagbar'
+Plugin 'findstr.vim'
+Plugin 'xolox/vim-misc'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'raimondi/delimitmate'
+Plugin 'tpope/vim-fugitive'
+Plugin 'valloric/youcompleteme'
+Plugin 'skywind3000/asyncrun.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this
+" line
+syntax enable
+colorscheme solarized
+set background=dark
+
+set completeopt-=preview
+set lines=40 columns=120
+set guifont=Source\ Code\ Pro\ for\ Powerline:h10:b
+set guioptions-=m
+set guioptions-=T
+set guioptions-=L
+set guioptions-=r
+set number
+set grepprg=grep\ -nH
+set backspace=indent,eol,start
+set mouse=a
+set smartindent
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set cino=(s,m1
+
+" netrw
+"let g:netrw_browse_split=4
+"let g:netrw_liststyle=3
+"let g:netrw_winsize= -28
+"le g:netrw_banner=0
+
+" NERDTree
+let g:NERDTreeDirArrowExpandable="+"
+let g:NERDTreeDirArrowCollapsible="."
+let g:NERDTreeMinimalUI=1
+let NERDTreeDirArrows=1
+
+" Airline
+let g:airline_powerline_fonts = 1
+
+let g:ycm_enable_diagnostic_signs=0
+let g:ycm_add_preview_to_completeopt=0
+"let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_collect_identifiers_from_tags_files=1
+let g:ycm_show_diagnostics_ui=0
+let g:ycm_key_invoke_completion = '<C-k>'
+
+" mapping
+nmap <A-R> :vertical resize 
+nmap <A-r> :resize 
+nmap <A-S> :AsyncRun grep -nH -R  .<left><left>
+nmap <A-s> :AsyncRun grep -nH -R <C-R><C-W> .<CR> 
+nmap <F2> :NERDTreeToggle<CR>
+nmap <F3> :TagbarToggle<CR>
+nmap <C-l> :AsyncRun ctags -R --exclude=sdk --exclude=tools --exclude=.git
+            \--exclude=lib --exclude=tags --language-force=C .<CR><CR>
