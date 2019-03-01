@@ -22,6 +22,7 @@ Plugin 'chiel92/vim-autoformat'
 Plugin 'raimondi/delimitmate'
 Plugin 'honza/vim-snippets'
 Plugin 'sirver/ultisnips'
+Plugin 'autoload_cscope.vim'
 Plugin 'skywind3000/asyncrun.vim'
 
 " All of your Plugins must be added before the following line
@@ -93,17 +94,17 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_signs = 0
 
 " Autoformat
-nmap <C-t> :Autoformat<CR> 
+" nmap <C-t> :Autoformat<CR> 
 
 " snippet
 let g:UltiSnipsExpandTrigger="<C-j>"
 
 " mapping
-nmap <A-s> :AsyncRun grep -nH -R <C-r><C-w> .<CR>
-nmap <A-S> :AsyncRun grep -R   .<left><left><CR>
 nmap <F2> :NERDTreeToggle<CR>
 nmap <F3> :TagbarToggle<CR>
-nmap <C-l> :exe "silent !ctags --fields=+l -R ." \| UpdateTypesFileOnly  \| redraw!<CR> 
+nmap <C-l><C-l> :AsyncRun ctags -R<CR>
+nmap <C-l><C-k> :UpdateTypesFile<CR>
+nmap <C-k> :AsyncRun cscope -R -b<CR>
 nmap <C-x> :q<CR>
 nmap <C-r> :w<CR>
 
