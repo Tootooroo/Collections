@@ -22,7 +22,6 @@ Plugin 'chiel92/vim-autoformat'
 Plugin 'raimondi/delimitmate'
 Plugin 'honza/vim-snippets'
 Plugin 'sirver/ultisnips'
-Plugin 'autoload_cscope.vim'
 Plugin 'skywind3000/asyncrun.vim'
 Plugin 'noweb.vim--McDermott'
 Plugin 'autoload_cscope.vim'
@@ -101,6 +100,8 @@ let g:syntastic_enable_signs = 0
 
 " snippet
 let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltisnipsJumpForwardTrigger="<C-f>"
+let g:UltisnipsJumpBackwardTrigger="<C-f>"
 
 " noweb
 let g:noweb_backend='tex'
